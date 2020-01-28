@@ -7,17 +7,16 @@ const Movie = (props) => {
   const [movie, setMovie] = useState();
  
   const {movieID} = useParams();
-  const [movieIDNum] = useState(movieID);
- 
+  
 
   useEffect(() => {
-    const id = movieIDNum;
+    //const id = 1;
    
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
        axios
-        .get(`http://localhost:5000/api/movies/${id}`)
+        .get(`http://localhost:5000/api/movies/${movieID}`)
         .then(response => {
           setMovie(response.data);
         })
@@ -25,7 +24,7 @@ const Movie = (props) => {
           console.error(error);
         });
 
-  },[movieIDNum]);
+  },[movieID]);
   
   // Uncomment this only when you have moved on to the stretch goals
   const saveMovie = () => {
